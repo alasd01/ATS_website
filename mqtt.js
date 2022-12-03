@@ -1,6 +1,6 @@
 client = new Paho.MQTT.Client("5ff471d504b74f45b49c7c48b0ccf558.s2.eu.hivemq.cloud", 8884,"clientId");
 //client = new Paho.MQTT.Client("iot.eclipse.org", Number(80), "/ws", "clientId");
-
+var ATS_name
 //set callback handlers
 client.onConnectionLost = function (responseObject) {
     console.log("Connection Lost: "+responseObject.errorMessage);
@@ -28,6 +28,7 @@ client.onMessageArrived = function (message) {
    // var loc = mess.substring(3,mess.indexOf('/'));
     var loc = mess.substring(4,7);
     var topic = mess.substring(mess.indexOf('/')+1);
+    ATS_name = loc;
     if(ATS_list.includes(loc))
     {
       var ATS_avail = document.getElementById(loc+"_avail");
@@ -37,7 +38,7 @@ client.onMessageArrived = function (message) {
           ATS_avail.innerHTML = message.payloadString + " | " + message.destinationName;
           ATS_avail.style.backgroundColor="#90EE90";
           if(message.payloadString === "Not Available"){
-              sendmail();
+              //sendmail();
               ATS_avail.style.backgroundColor="#ff0000";
           }
     }
@@ -45,7 +46,7 @@ client.onMessageArrived = function (message) {
           ATS_status.innerHTML = message.payloadString + " | " + message.destinationName;
           ATS_status.style.backgroundColor="#90EE90";
           if(message.payloadString === "Disconnected"){
-              sendmail();
+              //sendmail();
               ATS_status.style.backgroundColor="#ff0000";
           }
       }
