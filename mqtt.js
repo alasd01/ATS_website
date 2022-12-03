@@ -7,6 +7,7 @@ var GRE_status = document.getElementById('GRE_status');
 var test_avail = document.getElementById('test_avail');
 var test_status = document.getElementById('test_status');
 var ATS_name
+var color = document.getElementById('table').getElementsByTagName("td");
 console.log("hello");
 
 //set callback handlers
@@ -37,27 +38,46 @@ client.onMessageArrived = function (message) {
   var sub = mess.substring(0,mess.indexOf('/'));
   ATS_name = sub;
   var topic = mess.substring(mess.indexOf('/')+1);
+
   if (sub==="ATS_CS6"){
     if(topic==="availability"){
         CS6_avail.innerHTML = message.payloadString + " | " + message.destinationName;
-        if(message.payloadString === "Disconnected"){
+        CS6_avail.style.backgroundColor="#90EE90";
+        if(message.payloadString === "Not Available"){
           sendmail();
+          CS6_avail.style.backgroundColor="#ff0000";
         }
     }
     else{
       CS6_status.innerHTML = message.payloadString + " | " + message.destinationName;
+      CS6_status.style.backgroundColor="#90EE90";
+      if(message.payloadString === "Disconnected"){
+        sendmail();
+        CS6_status.style.backgroundColor="#ff0000";
+      }
     }
-    
   }
+
   if (sub==="ATS_GRE"){
     if(topic==="availability"){
         GRE_avail.innerHTML = message.payloadString + " | " + message.destinationName;
+        GRE_avail.style.backgroundColor="#90EE90";
+        if(message.payloadString === "Not Available"){
+          sendmail();
+          GRE_avail.style.backgroundColor="#ff0000";
+        }
     }
     else{
       GRE_status.innerHTML = message.payloadString + " | " + message.destinationName;
+      GRE_status.style.backgroundColor="#90EE90";
+      if(message.payloadString === "Disconnected"){
+        sendmail();
+        GRE_status.style.backgroundColor="#ff0000";
+      }
     }
     
   }
+  
   if(sub==="TEST"){
     if(topic==="availability"){
       test_avail.innerHTML = message.payloadString + " | " + message.destinationName;
