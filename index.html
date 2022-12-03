@@ -7,6 +7,8 @@
          table, th, td {
             border:1px solid black;
          }
+         p{text-align: center;}
+         h2{text-align: center;}
       </style> 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
       <script src="https://smtpjs.com/v3/smtp.js"></script>
@@ -14,6 +16,12 @@
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
 </script>
    </head>
+   <h2>UT Austin's ATS's Emergency Power Availability Tracker</h2>
+   <p>Below showcases the abbreviated name of the building where the ATS is 
+    located, the availability of the ATS, and the status of the Raspberry Pi reading
+    the data.
+   </p>
+   
    <body>
       <table id="table" style="width:100%">
          <tr>
@@ -22,6 +30,7 @@
            <th>RPI Status</th>
          </tr>
        </table>
+       <p>Made by Powell Lowe and David Alas</p>
        <script src="initialize.js" type="text/javascript"></script>
       <script src="email.js" type="text/javascript"></script>
       <script src="mqtt.js" type="text/javascript"></script>
