@@ -32,26 +32,24 @@ client.onMessageArrived = function (message) {
     {
       var ATS_avail = document.getElementById(loc+"_avail");
       var ATS_status = document.getElementById(loc+"_status");
-    }
     
-
-
-    if(topic==="availability"){
-        ATS_avail.innerHTML = message.payloadString + " | " + message.destinationName;
-        ATS_avail.style.backgroundColor="#90EE90";
-        if(message.payloadString === "Not Available"){
-            sendmail();
-            ATS_avail.style.backgroundColor="#ff0000";
-        }
-}
-    if(topic==="pi_status"){
-        ATS_status.innerHTML = message.payloadString + " | " + message.destinationName;
-        ATS_status.style.backgroundColor="#90EE90";
-        if(message.payloadString === "Disconnected"){
-            sendmail();
-            ATS_status.style.backgroundColor="#ff0000";
-        }
+      if(topic==="availability"){
+          ATS_avail.innerHTML = message.payloadString + " | " + message.destinationName;
+          ATS_avail.style.backgroundColor="#90EE90";
+          if(message.payloadString === "Not Available"){
+              sendmail();
+              ATS_avail.style.backgroundColor="#ff0000";
+          }
     }
+      if(topic==="pi_status"){
+          ATS_status.innerHTML = message.payloadString + " | " + message.destinationName;
+          ATS_status.style.backgroundColor="#90EE90";
+          if(message.payloadString === "Disconnected"){
+              sendmail();
+              ATS_status.style.backgroundColor="#ff0000";
+          }
+      }
+  }
 }
 
 
