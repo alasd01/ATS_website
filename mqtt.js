@@ -28,8 +28,12 @@ client.onMessageArrived = function (message) {
    // var loc = mess.substring(3,mess.indexOf('/'));
     var loc = mess.substring(4,7);
     var topic = mess.substring(mess.indexOf('/')+1);
-    var ATS_avail = document.getElementById(loc+"_avail");
-    var ATS_status = document.getElementById(loc+"_status");
+    if(ATS_list.includes(loc))
+    {
+      var ATS_avail = document.getElementById(loc+"_avail");
+      var ATS_status = document.getElementById(loc+"_status");
+    }
+    
 
 
     if(topic==="availability"){
