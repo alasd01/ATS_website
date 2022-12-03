@@ -40,7 +40,9 @@ client.onMessageArrived = function (message) {
   if (sub==="ATS_CS6"){
     if(topic==="availability"){
         CS6_avail.innerHTML = message.payloadString + " | " + message.destinationName;
-        
+        if(message.payloadString === "Disconnected"){
+          sendmail();
+        }
     }
     else{
       CS6_status.innerHTML = message.payloadString + " | " + message.destinationName;
