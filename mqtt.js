@@ -1,4 +1,6 @@
-client = new Paho.MQTT.Client("5ff471d504b74f45b49c7c48b0ccf558.s2.eu.hivemq.cloud", 8884,"clientId");
+
+var clientId = Math.floor(Math.random() * 10000).toString();
+client = new Paho.MQTT.Client("5ff471d504b74f45b49c7c48b0ccf558.s2.eu.hivemq.cloud", 8884, clientId);
 var ATS_name
 
 
