@@ -1,5 +1,5 @@
-SJH
-RRH
+SJH https://utdirect.utexas.edu/apps/campus/buildings/nlogon/facilities/utm/adh/
+RRH 
 BMA
 BMS
 ADH

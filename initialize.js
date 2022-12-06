@@ -1,5 +1,5 @@
 var ATS_list = [
-"SJH",
+"SJH", 
 "RRH",
 "BMA",
 "BMS",
@@ -29,6 +29,8 @@ var ATS_list = [
 "NMS",
 "CPE",
 ]
+
+
 function initialize(){
     var sorted_list = ATS_list.sort();
     var table = document.getElementById("table");
@@ -36,7 +38,13 @@ function initialize(){
         var ATS_name = sorted_list[i-1]
         var row = table.insertRow(i);
         var cell1 = row.insertCell(0);
-        cell1.innerHTML = ATS_name;
+        var a = document.createElement('a');
+        var link = document.createTextNode(ATS_name);
+        a.appendChild(link);
+        a.title = ATS_name;
+        a.href = "https://utdirect.utexas.edu/apps/campus/buildings/nlogon/facilities/utm/" + ATS_name.toLowerCase() + "/";
+        cell1.appendChild(a);
+        //cell1.innerHTML = ATS_name;
         var cell2 = row.insertCell(1);
         cell2.setAttribute('id',ATS_name+"_avail");
         var cell3 = row.insertCell(2);
