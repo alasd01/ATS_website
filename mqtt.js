@@ -2,7 +2,7 @@
 var clientId = Math.floor(Math.random() * 10000).toString();
 client = new Paho.MQTT.Client("5ff471d504b74f45b49c7c48b0ccf558.s2.eu.hivemq.cloud", 8884, clientId);
 var ATS_name
-
+var email_message
 
 
 //set callback handlers
@@ -43,11 +43,13 @@ client.onMessageArrived = function (message) {
     {
       var ATS_avail = document.getElementById(loc+"_avail");
       var ATS_status = document.getElementById(loc+"_status");
-    
+      
+      
       if(topic==="availability"){
           ATS_avail.innerHTML = message.payloadString + " | " + message.destinationName + " | Updated on "  +  dateTime;
           ATS_avail.style.backgroundColor="#90EE90";
           if(message.payloadString === "Not Available"){
+              email_message = "Emergency Backup is Not Available at";
               //sendmail();
               ATS_avail.style.backgroundColor="#ff0000";
           }
@@ -56,6 +58,7 @@ client.onMessageArrived = function (message) {
           ATS_status.innerHTML = message.payloadString + " | " + message.destinationName;
           ATS_status.style.backgroundColor="#90EE90";
           if(message.payloadString === "Disconnected"){
+              email_message = "The Raspberry Pi is Disconnected at";
               //sendmail();
               ATS_status.style.backgroundColor="#ff0000";
           }
