@@ -43,10 +43,12 @@ client.onMessageArrived = function (message) {
     {
       var ATS_avail = document.getElementById(loc+"_avail");
       var ATS_status = document.getElementById(loc+"_status");
-      
+      var ATS_time = document.getElementById(loc+"_time");
+      ATS_time.innerHTML = dateTime;
+      ATS_time.style.backgroundColor="#90EE90";
       
       if(topic==="availability"){
-          ATS_avail.innerHTML = message.payloadString + " | " + message.destinationName + " | Updated on "  +  dateTime;
+          ATS_avail.innerHTML = message.payloadString + " | " + message.destinationName; //+ " | Updated on "  +  dateTime;
           ATS_avail.style.backgroundColor="#90EE90";
           if(message.payloadString === "Not Available"){
               email_message = "Emergency Backup is Not Available at";

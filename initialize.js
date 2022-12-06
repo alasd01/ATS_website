@@ -51,6 +51,8 @@ function initialize(){
         cell2.setAttribute('id',ATS_name+"_avail");
         var cell3 = row.insertCell(2);
         cell3.setAttribute('id',ATS_name+"_status");
+        var cell4 = row.insertCell(3);
+        cell4.setAttribute('id',ATS_name+"_time");
     }
 
 }
