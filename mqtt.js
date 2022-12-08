@@ -32,7 +32,7 @@ client.onMessageArrived = function (message) {
   var today = new Date();
   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date+' '+ time;
+  var dateTime = time +' &bull; '+ date;
 
     var mess = message.destinationName;
    // var loc = mess.substring(3,mess.indexOf('/'));
@@ -45,11 +45,12 @@ client.onMessageArrived = function (message) {
       var ATS_status = document.getElementById(loc+"_status");
       var ATS_time = document.getElementById(loc+"_time");
       ATS_time.innerHTML = dateTime;
-      ATS_time.style.backgroundColor="#90EE90";
+      //ATS_time.style.backgroundColor="#90EE90";
       
       if(topic==="availability"){
-          ATS_avail.innerHTML = message.payloadString + " | " + message.destinationName; //+ " | Updated on "  +  dateTime;
+          ATS_avail.innerHTML = message.payloadString;// + " | " + message.destinationName; //+ " | Updated on "  +  dateTime;
           ATS_avail.style.backgroundColor="#90EE90";
+
           if(message.payloadString === "Not Available"){
               email_message = "Emergency Backup is Not Available at";
               //sendmail();
@@ -57,7 +58,7 @@ client.onMessageArrived = function (message) {
           }
     }
       if(topic==="pi_status"){
-          ATS_status.innerHTML = message.payloadString + " | " + message.destinationName;
+          ATS_status.innerHTML = message.payloadString ;//+ " | " + message.destinationName;
           ATS_status.style.backgroundColor="#90EE90";
           if(message.payloadString === "Disconnected"){
               email_message = "The Raspberry Pi is Disconnected at";
