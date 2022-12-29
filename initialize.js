@@ -30,10 +30,9 @@ var ATS_list = [
 "CPE",
 ]
 
-
+var sorted_list = ATS_list.sort();
+var table = document.getElementById("table");
 function initialize(){
-    var sorted_list = ATS_list.sort();
-    var table = document.getElementById("table");
     for(let i = 1; i < sorted_list.length; i++){
         var ATS_name = sorted_list[i-1]
         var row = table.insertRow(i);
