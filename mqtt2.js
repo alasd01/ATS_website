@@ -1,5 +1,5 @@
 var clientId = Math.floor(Math.random() * 10000).toString();
-client = new Paho.MQTT.Client("5ff471d504b74f45b49c7c48b0ccf558.s2.eu.hivemq.cloud", 8884, clientId);
+client = new Paho.MQTT.Client("ef8afabb20af4f97ad38bdc9ca5b710d.s2.eu.hivemq.cloud", 8884, clientId);
 var ATS_name
 var email_message
 
@@ -20,8 +20,8 @@ function onConnect(){
 client.connect({
   
 	onSuccess: onConnect,
-  userName: 'alasdavid01',
-  password: "Saladmaster99",
+  userName: 'ATS_username',
+  password: "AT$Monitoring",
   useSSL:true
 });
 
